@@ -33,9 +33,9 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
         else:
             print("Agent beginns")
         print("--" * 10)
+        print(env.render())
 
         for _step in range(start, max_steps + start):
-            print(env.render())
             # alternate the moves of the players
             if _step % 2 == 0:
                 
@@ -50,6 +50,7 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
                 state, reward, done, _ = env.step((action, player1))
                 state = np.append(state, player1)
                 state = state_dict[reshape_state(state)]
+                print(env.render())
                 print(reward)
                 if done:
                     print("**" * 10)
@@ -73,6 +74,7 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
                 state, reward, done, _ = env.step((action, player2))
                 state = np.append(state, player2)
                 state = state_dict[reshape_state(state)]
+                print(env.render())
                 if done:
                     print("**" * 10)
                     print("Agent won!")
