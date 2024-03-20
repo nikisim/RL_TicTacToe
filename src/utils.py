@@ -25,8 +25,10 @@ def create_state_dictionary() -> dict:
         if abs(count_digits[1] - count_digits[2]) <= 1:
             # if I want to add player's marker to a state
             for i in [1,2]:
-                state_dict[game_position + (i,)] = state_number
-                state_number += 1
+                count_dig = Counter(game_position + (i,))
+                if abs(count_dig[1] - count_dig[2]) != 0:
+                    state_dict[game_position + (i,)] = state_number
+                    state_number += 1
             # state_dict[game_position] = state_number
             # state_number += 1
     print(f"Number of legal states: {state_number}")
@@ -77,7 +79,7 @@ def load_qtable(folder, name="qtable"):
     """
     try:
         qtable = np.load(os.path.join(folder, f"{name}.npy"))
-        print(f"{name}.npy loaded!")
+        #print(f"{name}.npy loaded!")
     except:
         print(f"qtable '{name}' could not be loaded!")
     return qtable

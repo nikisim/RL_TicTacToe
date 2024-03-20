@@ -35,10 +35,10 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
         print("--" * 10)
 
         for _step in range(start, max_steps + start):
-
+            print(env.render())
             # alternate the moves of the players
             if _step % 2 == 0:
-                print(env.render())
+                
                 print("--" * 10)
                 print("Move Human")
                 action = np.nan
@@ -47,7 +47,6 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
                     action = int(input(f"choose an action from {action_space}:"))
                     print("Action:", action)
                 action_space = action_space[action_space != action]
-
                 state, reward, done, _ = env.step((action, player1))
                 state = np.append(state, player1)
                 state = state_dict[reshape_state(state)]
@@ -60,7 +59,6 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
                     print("\n" * 2)
                     break
             else:
-                print(env.render())
                 print("--" * 10)
                 print("move Agent")
 
@@ -72,7 +70,6 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
 
                 print("Action:", action)
                 action_space = action_space[action_space != action]
-
                 state, reward, done, _ = env.step((action, player2))
                 state = np.append(state, player2)
                 state = state_dict[reshape_state(state)]
