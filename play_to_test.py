@@ -4,7 +4,7 @@ import gym
 import numpy as np
 import gym_TicTacToe
 
-q_table = load_qtable('tables', "q_table_070")
+q_table = load_qtable('tables', "q_table_best")
 
 state_dict = create_state_dictionary()
 
