@@ -44,7 +44,6 @@ class QLearningAgent(object):
         if random.random() < self.epsilon:
             action = np.random.choice(action_space)
         else:
-            ranks = self.qtable[state, :].argsort().argsort()
-            action = np.where(ranks == np.min(ranks[action_space]))[0][0]
+            action = max(action_space, key=lambda action: self.qtable[state, action])
             
         return action

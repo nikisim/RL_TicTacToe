@@ -63,11 +63,12 @@ def play_tictactoe(env, qtable, state_dict, max_steps=9, num_test_games=3):
                 print("--" * 10)
                 print("move Agent")
 
-                array = np.array(qtable[state, :])
-                order = array.argsort()
-                ranks = order.argsort()
-                max_value_rank = np.min(ranks[action_space])
-                action = np.where(ranks == max_value_rank)[0][0]
+                action = max(action_space, key=lambda action: qtable[state, action])
+                # array = np.array(qtable[state, :])
+                # order = array.argsort()
+                # ranks = order.argsort()
+                # max_value_rank = np.min(ranks[action_space])
+                # action = np.where(ranks == max_value_rank)[0][0]
 
                 print("Action:", action)
                 action_space = action_space[action_space != action]
@@ -154,11 +155,12 @@ def play_tictactoe_with_random(env, qtable, state_dict, max_steps=9, num_test_ga
                 # print("--" * 10)
                 # print("move Agent")
 
-                array = np.array(qtable[state, :])
-                order = array.argsort()
-                ranks = order.argsort()
-                max_value_rank = np.min(ranks[action_space])
-                action = np.where(ranks == max_value_rank)[0][0]
+                # array = np.array(qtable[state, :])
+                # order = array.argsort()
+                # ranks = order.argsort()
+                # max_value_rank = np.min(ranks[action_space])
+                # action = np.where(ranks == max_value_rank)[0][0]
+                action = max(action_space, key=lambda action: qtable[state, action])
 
                 # print("Action:", action)
                 action_space = action_space[action_space != action]
