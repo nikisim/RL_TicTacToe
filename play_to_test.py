@@ -2,7 +2,13 @@ from src.play_tictactoe import play_tictactoe
 from src.utils import load_qtable, create_state_dictionary
 import gym
 import numpy as np
+import sys
+import warnings
 import gym_TicTacToe
+
+# ignore warnings
+if not sys.warnoptions:
+    warnings.simplefilter("ignore")
 
 q_table = load_qtable('tables', "q_table_best_09")
 

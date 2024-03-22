@@ -3,6 +3,12 @@ from src.utils import load_qtable, create_state_dictionary
 import gym
 import numpy as np
 import gym_TicTacToe
+import sys
+import warnings
+
+# ignore warnings
+if not sys.warnoptions:
+    warnings.simplefilter("ignore")
 
 q_table = load_qtable('tables', "q_table_best_09")
 
