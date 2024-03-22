@@ -13,6 +13,8 @@ Win Rate = 0.9
 ## How to install
 ### 1) Setup
 ```
+git clone https://github.com/nikisim/RL_TicTacToe.git
+cd RL_TicTacToe
 git clone git@github.com:MauroLuzzatto/OpenAI-Gym-TicTacToe-Environment.git
 cd OpenAI-Gym-TicTacToe-Environment
 pip install -r requirements.txt
@@ -55,7 +57,7 @@ State space:
     - 2 - нолик
 
 ### Награда
-За победу агенту дается вознаграждение +10, за каждый сыгранный ход штраф -1. ТАкже агент получает дополнительную награду, если блокирует победный ход противника и получает +9.
+За победу агенту дается вознаграждение +10, за каждый сыгранный ход штраф -1. Также агент получает дополнительную награду, если блокирует победный ход противника и получает +9.
 
 ```
 REWARD_LARGE = 10
