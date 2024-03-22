@@ -1,10 +1,14 @@
-### RL_TicTacToe
+# RL_TicTacToe
 
 This repository contains a Q-Learning RL implementation for TicTacToe env from (https://github.com/MauroLuzzatto/OpenAI-Gym-TicTacToe-Environment).
 
 
 Обучение агента происходит с помощью табличного Q-обучения с epsilon-greedy стратегией. Во время обучения агент играет сам с собой, очередность хода меняется случайным образом.
 
+### Current Win Rate
+```
+Win Rate = 0.9
+```
 
 ## How to install
 ### 1) Setup
@@ -50,7 +54,14 @@ State space:
     - 2 - нолик
 
 ### Награда
-За победу агенту дается вознаграждение +10, за каждый сыгранный ход штраф -1
+За победу агенту дается вознаграждение +10, за каждый сыгранный ход штраф -1. ТАкже агент получает дополнительную награду, если блокирует победный ход противника и получает +9.
+
+```
+REWARD_LARGE = 10
+REWARD_SMALL = -1
+REWARD_FOR_BLOCK = 9
+```
+
 
 ### Done
 Игра заканчивается, когда:
@@ -64,4 +75,10 @@ State space:
 
 ```
 python3 play_to_test
+```
+
+## How to check current win rate
+
+```
+python3 play_against_random
 ```
