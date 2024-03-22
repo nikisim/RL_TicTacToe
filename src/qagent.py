@@ -27,11 +27,13 @@ class QLearningAgent(object):
         self.decay_rate = exploration_parameters["decay_rate"]
 
     def update_qtable(self, state, new_state, action, reward, done):
-        return self.qtable[state, action] + self.learning_rate * (
-            reward
-            + self.gamma * np.max(self.qtable[new_state, :]) * (1 - done)
-            - self.qtable[state, action]
-        )
+        """
+        Q-Value update:
+        Q(s,a) := (1 - alpha) * Q(s,a) + alpha * (r + gamma * V(s'))
+        """
+        reference_qvalue = reward + self.gamma * np.max(self.qtable[new_state, :])
+        updated_qvalue = self.learning_rate * reference_qvalue + (1 - self.learning_rate) * self.qtable[state, action]
+        return updated_qvalue
     
     def get_qtable(self):
         return self.qtable
@@ -41,6 +43,11 @@ class QLearningAgent(object):
                                 ) + self.min_epsilon
 
     def get_action(self, state: int, action_space: np.array) -> int:
+        """
+        Compute the action to take in the current state, including exploration.  
+        With probability self.epsilon, we should take a random action.
+            otherwise - the best policy action.
+        """
         if random.random() < self.epsilon:
             action = np.random.choice(action_space)
         else:
